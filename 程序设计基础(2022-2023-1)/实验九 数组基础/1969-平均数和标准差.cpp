@@ -2,8 +2,8 @@
 ！！！！注意！！！！
 这一个代码不能通过编译，因为使用了stl
 而且测试点的答案好像有错误
-
-
+题目中说的标准差是全体标准差，不是样本标准差
+https://www.shuxuele.com/data/standard-deviation-formulas.html
 */
 #include <bits/stdc++.h>
 
