@@ -1,22 +1,21 @@
 #include <bits/stdc++.h>
+
 using namespace std;
-
-int main(){
-    int n;
-    while(1){
-        scanf("%d",&n);
-        if(n==-1){
-            break;
-        }
-        int i,j,m;
-        i=0,j=1;
-        n=n-2;
-        while(n--){
-            m=j,j=i+j,i=m;
-        }
-        printf("%d\n",i+j);
-    }
-    return 0;
+int fabo[1000];
+void getvalue(int idxmax, int n) {
+  for (int i = idxmax + 1; i < n + 1; ++i) {
+    fabo[i] = fabo[i - 1] + fabo[i - 2];
+  }
 }
-
-
+int main() {
+  fabo[0] = 0;
+  fabo[1] = 1;
+  int n;
+  int idxmax = 1;
+  while ((cin >> n) && n != -1) {
+    if (n > idxmax)
+      getvalue(idxmax, n);
+    printf("%d\n", fabo[n]);
+  }
+  return 0;
+}
