@@ -1,4 +1,4 @@
 
-int empty(SeqQueue *Q){
-  return Q->front == Q->rear;
+int empty(SeqQueue *Q) {
+  return Q->length == 0;
 }
