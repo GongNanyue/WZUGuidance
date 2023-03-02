@@ -15,6 +15,10 @@ SeqList *createList(int capacity) {
   return SL;
 }
 
+int getLength(SeqList *L){
+  return  L->length;
+}
+
 int isEmpty(SeqList *L) {
   return L->length == 0;
 }
