@@ -10,4 +10,5 @@ void layerOrder(BTree bt){
       q.push(q.front()->rchild);
     q.pop();
   }
+  //最后不需要输出换行
 }
