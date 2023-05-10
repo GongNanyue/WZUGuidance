@@ -1,26 +1,39 @@
 
 BTree createTree(char s[], int left, int right) {
-    if (left > right) {
-        return NULL;
-    }
-    BTNode * node = (BTNode*)malloc(sizeof(BTNode));
-    node->data = s[left];
-    node->lchild = NULL;
-    node->rchild = NULL;
-    if(left == right) return node;
-    int i = left + 1;
-    int count = 0;
-    while (i <= right) {
+    if (left > right) return NULL;
+
+    int leftBracket = -1, comma = -1, rightBracket = -1, bracketCnt = 0;
+    for (int i = left; i <= right; ++i) {
         if (s[i] == '(') {
-            count++;
+            bracketCnt++;
+            if (bracketCnt == 1)
+                leftBracket = i;
+        } else if (s[i] == ',') {
+            if (bracketCnt == 1)
+                comma = i;
         } else if (s[i] == ')') {
-            count--;
-        } else if (count == 1 && (s[i] == ',' || i == right)) {
-            break;
+            bracketCnt--;
+            if (bracketCnt == 0)
+                rightBracket = i;
         }
-        i++;
     }
-    node->lchild = createTree(s, left + 2, i - 1);
-    node->rchild = createTree(s, i + 1, right - 1);
-    return node;
+
+    BTNode *parentNode = (BTNode *) malloc(sizeof(BTNode));
+    parentNode->data = -1;
+    parentNode->lchild = parentNode->rchild = NULL;
+    sscanf(s + left, "%c", &parentNode->data);
+
+    if (leftBracket == -1 && comma == -1 && rightBracket == -1) {
+
+        return parentNode;
+    } else if (leftBracket + 1 == comma) {
+        parentNode->rchild = createTree(s, comma + 1, rightBracket - 1);
+    } else if (rightBracket - 1 == comma) {
+        parentNode->lchild = createTree(s, leftBracket + 1, comma - 1);
+    } else {
+        parentNode->rchild = createTree(s, comma + 1, rightBracket - 1);
+        parentNode->lchild = createTree(s, leftBracket + 1, comma - 1);
+    }
+
+    return parentNode;
 }
