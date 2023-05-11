@@ -1,4 +1,11 @@
 
+ElementType getData(char s[], int idx) {
+    ElementType res;
+    sscanf(s + idx, "%c", &res);
+    return res;
+}
+
+
 CSTree createTree(char s[]) {
     CSTree root = NULL, node = NULL;
     stack<CSTree> st;
@@ -14,7 +21,7 @@ CSTree createTree(char s[]) {
             st.pop();
         } else {
             node = (CSNode *) malloc(sizeof(CSNode));
-            node->data = s[i];
+            node->data = getData(s,i);
             node->child = node->sibling = NULL;
             if (root == NULL) {
                 root = node;
