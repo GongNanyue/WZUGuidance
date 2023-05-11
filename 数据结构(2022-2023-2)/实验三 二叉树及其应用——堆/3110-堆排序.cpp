@@ -11,3 +11,10 @@ int myCmp(const void *a, const void *b) {
 void heapSort(Heap H) {
   qsort(H->data + 1, H->size, sizeof(ElementType), myCmp);
 }
+
+
+/*大根堆变成小根堆
+void heapSort(Heap H) {
+    sort(H->data + 1, H->data + (H->size + 1));
+}
+*/
