@@ -1,0 +1,46 @@
+void delVertex(Graph g, VertexType v) {
+  // 检查顶点v是否存在于图g中
+  int i = locateVertex(g, v); // 调用已定义的函数，返回顶点v在图g中的位置，如果不存在则返回-1
+  if (i == -1) return; // 如果顶点v不存在，则直接返回
+
+  // 遍历图g中的所有顶点，如果有边指向顶点v，则调用delEdge函数删除该边
+  for (int j = 0; j < g->vertexNum; j++) {
+    if (j != i) { // 跳过顶点v自身
+      ENode *p = g->vexs[j].firstEdge; // 获取顶点j的第一条出边
+      while (p) { // 遍历顶点j的所有出边
+        if (p->adjVertex == i) { // 如果出边指向顶点v
+          delEdge(g, g->vexs[j].data, v); // 调用已定义的函数，删除边(j,v)
+          break; // 跳出循环，因为每个顶点只能有一条边指向同一个顶点
+        }
+        p = p->nextEdge; // 指向下一条出边
+      }
+    }
+  }
+
+  // 删除图g中顶点v对应的邻接表节点
+  ENode *q = g->vexs[i].firstEdge; // 获取顶点v的第一条出边
+  while (q) { // 遍历顶点v的所有出边
+    ENode *r = q->nextEdge; // 保存下一条出边的指针
+    free(q); // 释放当前出边的内存空间
+    q = r; // 指向下一条出边
+  }
+  g->vexs[i].firstEdge = NULL; // 将顶点v的出边指针置空
+
+  // 将图g中最后一个顶点复制到顶点v的位置，覆盖原来的数据，并更新相关的邻接表节点
+  if (i != g->vertexNum - 1) { // 如果顶点v不是最后一个顶点
+    g->vexs[i] = g->vexs[g->vertexNum - 1]; // 复制最后一个顶点到顶点v的位置
+    for (int j = 0; j < g->vertexNum - 1; j++) { // 遍历除了最后一个顶点之外的所有顶点
+      ENode *p = g->vexs[j].firstEdge; // 获取顶点j的第一条出边
+      while (p) { // 遍历顶点j的所有出边
+        if (p->adjVertex == g->vertexNum - 1) { // 如果出边指向最后一个顶点
+          p->adjVertex = i; // 将出边指向新的位置i，即原来的顶点v的位置
+          break; // 跳出循环，因为每个顶点只能有一条边指向同一个顶点
+        }
+        p = p->nextEdge; // 指向下一条出边
+      }
+    }
+  }
+
+  // 将图g中的顶点数减一，完成删除操作
+  g->vertexNum--;
+}
