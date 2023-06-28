@@ -73,8 +73,6 @@ void rehash(HashTable * h){
 	nh->size = 0;
 	nh->cells = new Cell[nh->capacity];
 	
-	
-	
 	for(int i = 0;i < h->capacity;++i)
 		if(h->cells[i].flag == USED)
 			insert(nh,h->cells[i].key);
