@@ -57,36 +57,36 @@ void Dijkstra(Graph g, int s, int D[], int P[])
 ```
 
 ```cpp
-void Dijkstra(Graph g, int s, int D[], int P[]){
-	set<int> set;
-	for(int i = 0;i < g->vertexNum;++i){
-		D[i] = INT_MAX;
-		P[i] = -1;
-	}
-	D[s] = 0;
-	P[s] = s;
-	
-	for(int i = 0;i < g->vertexNum;++i){
-		int u = -1,min = INT_MAX;
-		for(int j = 0;j < g->vertexNum;++j){
-			if(set.count(j) == 0 && D[j] < min){
-				u = j;
-				min = D[j];
-			}
-		}
-		
-		if(u == -1)break;
-		
-		set.insert(u);
-		
-		
-		for(ENode *p = g->vexs[u].firstEdge;p != NULL;p = p->nextEdge){
-			int v = p->adjVertex, w = p->weight;
-			if(set.count(v) == 0 && D[v] > D[u] + w){
-				D[v] = D[u] + w;
-				P[v] = u;
-			}
-		}
-	}
+void Dijkstra(Graph g, int s, int D[], int P[]) {
+    set<int> set;
+    for (int i = 0; i < g->vertexNum; ++i) {
+        D[i] = INT_MAX;
+        P[i] = -1;
+    }
+    D[s] = 0;
+    P[s] = s;
+
+    for (int i = 0; i < g->vertexNum; ++i) {
+        int u = -1, min = INT_MAX;
+        for (int j = 0; j < g->vertexNum; ++j) {
+            if (set.count(j) == 0 && D[j] < min) {
+                u = j;
+                min = D[j];
+            }
+        }
+
+        if (u == -1)break;
+
+        set.insert(u);
+
+
+        for (ENode *p = g->vexs[u].firstEdge; p != NULL; p = p->nextEdge) {
+            int v = p->adjVertex, w = p->weight;
+            if (set.count(v) == 0 && D[v] > D[u] + w) {
+                D[v] = D[u] + w;
+                P[v] = u;
+            }
+        }
+    }
 }
 ```
