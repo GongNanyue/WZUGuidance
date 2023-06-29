@@ -1,5 +1,6 @@
 void initHeap(Heap H, Node data[], int n) {
-/*H->data = (ElementType *) malloc(sizeof(ElementType) * (n + 1));
+/*
+  H->data = (ElementType *) malloc(sizeof(ElementType) * (n + 1));
   H->capacity = n;
   H->size = n;
   在createHeap 创建 H的时候就已经分配好内存了 所以上面可以不写*/
