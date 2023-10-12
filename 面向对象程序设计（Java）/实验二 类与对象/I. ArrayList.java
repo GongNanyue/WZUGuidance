@@ -1,49 +1,86 @@
 import java.util.Scanner;
 
-class Point {
-    double x, y;
+public class Main {
 
-    Point() {
-        x = 0;
-        y = 0;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Loan loan = new Loan();
+        Data data = new Data();
+        String string = new String();
+        Frame frame = new Frame();
+        Circle circle = new Circle();
+        loan.loan = sc.nextDouble();
+        data.data = sc.next();
+        string = sc.next();
+        frame.name = sc.next();
+        circle.radius = sc.nextDouble();
+        System.out.println(loan);
+        System.out.println(data);
+        System.out.println(string);
+        System.out.println(frame);
+        System.out.println(circle);
+    }
+}
+
+class Loan {
+    double loan;
+
+    public Loan() {
     }
 
-    public Point(double x, double y) {
-        this.x = x;
-        this.y = y;
+    public Loan(double loan) {
+        this.loan = loan;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Loan: %.2f", loan);
+    }
+}
+
+class Data {
+    String data;
+
+    public Data() {
+    }
+
+    public Data(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Date: %s", data);
+    }
+}
+
+class Frame {
+    String name;
+
+    public Frame() {
+    }
+
+    public Frame(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Frame: %s", name);
     }
 }
 
 class Circle {
-    Point O;
-    double r;
+    double radius;
 
-    Circle() {
-        O = new Point();
-        r = 0;
+    public Circle() {
     }
 
-    public Circle(Point o, double r) {
-        O = o;
-        this.r = r;
+    Circle(double radius) {
+        this.radius = radius;
     }
 
-    public void show() {
-        System.out.printf("x=%.2f,y=%.2f\nradius=%.2f\n", O.x, O.y, r);
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        Circle c = new Circle();
-        c.show();
-        for (int i = 0; i < n; i++) {
-            c.O.x = sc.nextDouble();
-            c.O.y = sc.nextDouble();
-            c.r = sc.nextDouble();
-            c.show();
-        }
+    public String toString() {
+        return String.format("Circle: %.2f", radius);
     }
 }
