@@ -8,9 +8,9 @@ public class Main {
         ComparableCircle c1 = new ComparableCircle(r1);
         ComparableCircle c2 = new ComparableCircle(r2);
         if (c1.compareTo(c2) > 0) {
-            System.out.printf("The max circle's radius is %.2f\n", c1.getArea());
+            System.out.printf("The max circle's area is %.2f\n", c1.getArea());
         } else {
-            System.out.printf("The max circle's radius is %.2f\n", c2.getArea());
+            System.out.printf("The max circle's area is %.2f\n", c2.getArea());
         }
     }
 }
