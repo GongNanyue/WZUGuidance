@@ -1,0 +1,100 @@
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String name = sc.next();
+        double a = sc.nextDouble();
+        double b = sc.nextDouble();
+        Rectangle r1 = new Rectangle(name, a, b);
+        name = sc.next();
+        a = sc.nextDouble();
+        b = sc.nextDouble();
+        Rectangle r2 = new Rectangle(name, a, b);
+        r1 = (Rectangle) GeometricObject.max(r1, r2);
+        System.out.printf("%s %.2f %.2f %.2f\n", r1.name, r1.length, r1.width, r1.getArea());
+
+        name = sc.next();
+        double r = sc.nextDouble();
+        Circle c1 = new Circle(name, r);
+        name = sc.next();
+        r = sc.nextDouble();
+        Circle c2 = new Circle(name, r);
+        c1 = (Circle) GeometricObject.max(c1,c2);
+        System.out.printf("%s %.2f %.2f\n", c1.name, c1.radius, c1.getArea());
+
+    }
+
+    public static double sumArea(GeometricObject[] a) {
+        double sum = 0;
+        for (GeometricObject o : a) {
+            sum += o.getArea();
+        }
+        return sum;
+    }
+}
+
+
+abstract class GeometricObject implements Comparable<GeometricObject> {
+    String name;
+
+    public GeometricObject(String name) {
+        this.name = name;
+    }
+
+    public abstract double getArea();
+
+    public static Comparable max(Comparable o1, Comparable o2) {
+        GeometricObject lhs = (GeometricObject) o1;
+        GeometricObject rhs = (GeometricObject) o2;
+        if (lhs.getArea() == rhs.getArea()) {
+            return rhs;
+        } else if (lhs.getArea() > rhs.getArea()) {
+            return lhs;
+        } else {
+            return rhs;
+        }
+    }
+}
+
+class Rectangle extends GeometricObject {
+    double length, width;
+
+    public Rectangle(String name, double length, double width) {
+        super(name);
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public double getArea() {
+        return length * width;
+    }
+
+    @Override
+    public int compareTo(GeometricObject o) {
+        Rectangle rhs = (Rectangle) o;
+        return Double.compare(length * width, rhs.length * rhs.width);
+    }
+}
+
+class Circle extends GeometricObject {
+    double radius;
+
+    public Circle(String name, double radius) {
+        super(name);
+        this.radius = radius;
+    }
+
+    @Override
+    public double getArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public int compareTo(GeometricObject o) {
+        Circle rhs = (Circle) o;
+        return Double.compare(radius, rhs.radius);
+    }
+}
