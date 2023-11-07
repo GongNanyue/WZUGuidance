@@ -1,34 +1,3 @@
-import java.util.Scanner;
-
-public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        for (int i = 0; i < n; i++) {
-            double r = sc.nextDouble();
-            double h = sc.nextDouble();
-            Cylinder cylinder = new Cylinder(r, h);
-            System.out.printf("%.2f %.2f\n", cylinder.getArea(), cylinder.getVolume());
-
-            r = sc.nextDouble();
-            Ball ball = new Ball(r);
-            System.out.printf("%.2f %.2f\n", ball.getArea(), ball.getVolume());
-
-            double a = sc.nextDouble();
-            Cuber cuber = new Cuber(a);
-            System.out.printf("%.2f %.2f\n", cuber.getArea(), cuber.getVolume());
-
-            a = sc.nextDouble();
-            double b = sc.nextDouble();
-            double c = sc.nextDouble();
-            Cuboid cuboid = new Cuboid(a,b,c);
-            System.out.printf("%.2f %.2f\n", cuboid.getArea(), cuboid.getVolume());
-
-
-        }
-
-    }
-}
 
 abstract class Shape {
     public abstract double getArea();
