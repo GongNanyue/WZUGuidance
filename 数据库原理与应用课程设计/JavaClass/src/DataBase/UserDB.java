@@ -17,16 +17,7 @@ public class UserDB {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
         Statement statement = connection.createStatement();
         statement.execute("use library");
-        String sql = "UPDATE user SET reader_name = '"
-                + user.readerName
-                + "', reader_password = '"
-                + user.readerPassword
-                + "', reader_sex = "
-                + user.readerSex
-                + ", reader_type = "
-                + user.readerType
-                + ", Capacity = "
-                + user.Capacity
+        String sql = "UPDATE user SET reader_capacity ="+user.Capacity
                 + " WHERE reader_id = " + user.readerId;
         statement.execute(sql);
     }

@@ -3,9 +3,7 @@ package DataBase;
 import Entity.Book;
 import Entity.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 public class ReturnDB {
     public void update(User user, int bookId) {
@@ -17,6 +15,14 @@ public class ReturnDB {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public ResultSet query(int bookId) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+        Statement statement = connection.createStatement();
+        statement.execute("use library");
+        String sql="select * from borrow where book_id = '"+bookId+"'";
+        return statement.executeQuery(sql);
     }
 
 }

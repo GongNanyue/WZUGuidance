@@ -19,12 +19,7 @@ public class BorrowDB {
         }
     }
 
-    public int getBookIdByName(String bookName) throws SQLException {
-        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
-        Statement statement = connection.createStatement();
-        statement.execute("use library");
-        String sql="select book_id from book where book_name like '" + bookName + "'";
-        return statement.executeQuery(sql).getInt("book_id");
-    }
+
+
 
 }

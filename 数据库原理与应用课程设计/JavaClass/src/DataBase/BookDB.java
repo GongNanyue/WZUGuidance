@@ -30,5 +30,17 @@ public class BookDB {
         return statement.executeQuery(sql);
     }
 
+    public int getBookIdByName(String bookName) throws SQLException {
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "root");
+        Statement statement = connection.createStatement();
+        statement.execute("use library");
+        String sql="select book_id from book where book_name like '" + bookName + "'";
+        ResultSet x = statement.executeQuery(sql);
+        if(x.next()){
+            return x.getInt("book_id");
+        }
+        return -1;
+    }
+
 }
 
