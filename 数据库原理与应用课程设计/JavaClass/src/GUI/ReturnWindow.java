@@ -1,11 +1,16 @@
 package GUI;
 
 import DataBase.BookDB;
+import DataBase.ReaderDB;
+import DataBase.ReturnDB;
 import Entity.User;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
-public class ReturnWindow extends JFrame{
+public class ReturnWindow extends JFrame {
     JTextField bookName;
 
     JButton Return;
@@ -16,6 +21,7 @@ public class ReturnWindow extends JFrame{
 
     User user;
 
+
     public ReturnWindow(User user) {
         this.user = user;
         setLayout(null);
@@ -25,7 +31,8 @@ public class ReturnWindow extends JFrame{
         init();
         setVisible(true);
     }
-    public void init(){
+
+    public void init() {
         bookName = new JTextField();
         Return = new JButton("还书");
         cancel = new JButton("取消");
@@ -35,6 +42,26 @@ public class ReturnWindow extends JFrame{
         Return.setBounds(0, 100, 100, 30);
         cancel.setBounds(0, 150, 100, 30);
 
+        Return.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    ResultSet res = new BookDB().query(bookName.getText());
+                    boolean f = false;
+                    while (res.next()) {
+                        new ReturnDB().update(user, res.getInt("book_id"));
+                        f = true;
+                    }
+                    if (f) {
+                        new JOptionPane("还书成功").createDialog("信息").setVisible(true);
+                    } else {
+                        new JOptionPane("没有所要还的书").createDialog("信息").setVisible(true);
+                    }
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
 
         cancel.addActionListener(e -> {
             ReturnWindow.this.dispose();
