@@ -1,6 +1,7 @@
 package GUI;
 
 import DataBase.BookDB;
+import DataBase.BorrowDB;
 import DataBase.ReaderDB;
 import DataBase.ReturnDB;
 import Entity.User;
@@ -46,7 +47,7 @@ public class ReturnWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ResultSet res = new BookDB().query(bookName.getText());
+                    ResultSet res = new BorrowDB().query(bookName.getText());
                     boolean f = false;
                     while (res.next()) {
                         new ReturnDB().update(user, res.getInt("book_id"));

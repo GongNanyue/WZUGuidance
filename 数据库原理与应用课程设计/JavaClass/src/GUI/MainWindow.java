@@ -11,10 +11,10 @@ public class MainWindow extends JFrame {
     JButton borrowBook;
     JButton returnBook;
     JButton queryBook;
-
     JButton readerInfo;
-
     JButton cancel;
+
+    JButton showBooks;
     User user;
     public MainWindow(User user) {
         this.user = user;
@@ -32,12 +32,14 @@ public class MainWindow extends JFrame {
         queryBook = new JButton("查询");
         readerInfo = new JButton("我的信息");
         cancel = new JButton("退出");
+        showBooks = new JButton("显示所有书籍");
 
         borrowBook.setBounds(0,0,100,30);
         returnBook.setBounds(0,50,100,30);
         queryBook.setBounds(0,100,100,30);
         readerInfo.setBounds(0,150,100,30);
         cancel.setBounds(0,200,100,30);
+        showBooks.setBounds(150,0,200,30);
 
         borrowBook.addActionListener(new ActionListener() {
             @Override
@@ -71,6 +73,14 @@ public class MainWindow extends JFrame {
             }
         });
 
+        showBooks.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new ShowBooksWindow(user);
+                MainWindow.this.dispose();
+            }
+        });
+
 
         cancel.addActionListener(new ActionListener() {
             @Override
@@ -84,6 +94,7 @@ public class MainWindow extends JFrame {
         this.add(returnBook);
         this.add(queryBook);
         this.add(readerInfo);
+        this.add(showBooks);
         this.add(cancel);
     }
 }

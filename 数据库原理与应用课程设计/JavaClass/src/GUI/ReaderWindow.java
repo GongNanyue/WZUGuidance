@@ -40,7 +40,7 @@ public class ReaderWindow extends JFrame {
         cancel.setBounds(0, 350, 100, 30);
 
 
-        textArea.setFont(new Font("Times New Roman",Font.BOLD,20));
+        textArea.setFont(new Font("宋体",Font.BOLD,20));
 
         cancel.addActionListener(new ActionListener() {
             @Override
@@ -55,10 +55,14 @@ public class ReaderWindow extends JFrame {
 
         ResultSet set = new ReaderDB().query(user);
         try {
-            String s = "";
+            String s = "借书记录：\n";
+            textArea.append(s);
+            boolean f=false;
             while (set.next()) {
                 s += set.getString(2) + "\n";
+                f=true;
             }
+            if(!f) s="没有借书记录\n";
             textArea.setText(s);
         } catch (Exception e) {
             e.printStackTrace();

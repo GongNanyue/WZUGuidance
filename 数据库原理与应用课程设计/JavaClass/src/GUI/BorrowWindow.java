@@ -43,8 +43,12 @@ public class BorrowWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String bookName = BorrowWindow.this.bookName.getText();
-                try (ResultSet rs = bookDB.query(bookName);) {
-
+                int borrowedBooks = user.Capacity;
+                if (borrowedBooks >= user.getMaxBooks()) {
+                    JOptionPane.showMessageDialog(null, "借书数量已达上限");
+                    return;
+                }
+                try (ResultSet rs = bookDB.query(bookName)) {
                     if (rs.next()) {
                         Book book = new Book(rs.getInt("book_id"), rs.getString("book_name"),
                                 rs.getString("book_type"), rs.getInt("book_num"),
@@ -52,6 +56,7 @@ public class BorrowWindow extends JFrame {
                         if (book.bookNum > 0) {
                             JOptionPane.showMessageDialog(null, "借书成功");
                             bookDB.update(book);
+                            user.Capacity+=1;
                             new BorrowDB().insert(user,book);
                         } else {
                             JOptionPane.showMessageDialog(null, "该书已被借完");
