@@ -14,6 +14,7 @@ public class BorrowWindow extends JFrame {
     JTextField bookName;
     JButton borrow;
     JButton cancel;
+    JLabel borrowNum;
     BookDB bookDB;
     User user;
 
@@ -33,18 +34,24 @@ public class BorrowWindow extends JFrame {
         cancel = new JButton("取消");
         bookDB = new BookDB();
 
+        String borrowNumStr = "您的已借书籍数量为： " + user.Capacity;
+        borrowNum = new JLabel(borrowNumStr);
 
         bookName.setBounds(0, 50, 100, 30);
         borrow.setBounds(0, 100, 100, 30);
+        borrowNum.setBounds(300, 100, 200, 30);
         cancel.setBounds(0, 150, 100, 30);
-
 
         borrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String bookName = BorrowWindow.this.bookName.getText();
-                try (ResultSet rs = bookDB.query(bookName);) {
-
+                int borrowedBooks = user.Capacity;
+                if (borrowedBooks >= user.getMaxBooks()) {
+                    JOptionPane.showMessageDialog(null, "借书数量已达上限");
+                    return;
+                }
+                try (ResultSet rs = bookDB.query(bookName)) {
                     if (rs.next()) {
                         Book book = new Book(rs.getInt("book_id"), rs.getString("book_name"),
                                 rs.getString("book_type"), rs.getInt("book_num"),
@@ -52,7 +59,11 @@ public class BorrowWindow extends JFrame {
                         if (book.bookNum > 0) {
                             JOptionPane.showMessageDialog(null, "借书成功");
                             bookDB.update(book);
+                            user.Capacity+=1;
                             new BorrowDB().insert(user,book);
+
+                            String borrowNumStr = "您的已借书籍数量为： " + user.Capacity;
+                            borrowNum.setText(borrowNumStr);
                         } else {
                             JOptionPane.showMessageDialog(null, "该书已被借完");
                         }
@@ -73,6 +84,7 @@ public class BorrowWindow extends JFrame {
 
         this.add(bookName);
         this.add(borrow);
+        this.add(borrowNum);
         this.add(cancel);
     }
 }

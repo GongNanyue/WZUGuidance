@@ -30,6 +30,16 @@ public class User {
         Capacity = capacity;
     }
 
+    public int getMaxBooks() {
+        if (readerType == 0) {
+            return 5; // 学生最多可以借5本书
+        } else if (readerType == 1) {
+            return 10; // 老师最多可以借10本书
+        } else {
+            return 0; // 对于其他类型的用户，我们假设他们不能借书
+        }
+    }
+
     public void setreaderId(int readerId) {
 
         this.readerId = readerId;

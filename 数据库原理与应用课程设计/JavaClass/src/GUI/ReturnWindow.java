@@ -46,16 +46,18 @@ public class ReturnWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    ResultSet res = new BookDB().query(bookName.getText());
-                    boolean f = false;
-                    while (res.next()) {
-                        new ReturnDB().update(user, res.getInt("book_id"));
-                        f = true;
-                    }
-                    if (f) {
-                        new JOptionPane("还书成功").createDialog("信息").setVisible(true);
+                    int bookId = bookDB.getBookIdByName(bookName.getText());
+                    if (bookId == -1) {
+                        new JOptionPane("没有这本书").createDialog("信息").setVisible(true);
                     } else {
-                        new JOptionPane("没有所要还的书").createDialog("信息").setVisible(true);
+                        ResultSet res = new ReturnDB().query(bookId);
+                        if (res.next()) {
+                            new ReturnDB().update(user, res.getInt("book_id"));
+                            new JOptionPane("还书成功").createDialog("信息").setVisible(true);
+                            user.Capacity -= 1;
+                        } else {
+                            new JOptionPane("你没有借阅这本书").createDialog("信息").setVisible(true);
+                        }
                     }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);

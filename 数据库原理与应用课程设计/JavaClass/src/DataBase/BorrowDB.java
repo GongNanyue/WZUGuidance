@@ -3,9 +3,7 @@ package DataBase;
 import Entity.Book;
 import Entity.User;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
 
 public class BorrowDB {
     public int id;
@@ -20,5 +18,8 @@ public class BorrowDB {
             statement.execute(STR."insert into borrow(reader_id,book_id) values('\{user.readerId}','\{book.bookId}')");
         }
     }
+
+
+
 
 }
