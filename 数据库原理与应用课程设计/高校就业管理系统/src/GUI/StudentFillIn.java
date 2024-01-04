@@ -51,6 +51,13 @@ public class StudentFillIn extends JFrame {
             }
         });
 
+        back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new StudentWin(StudentFillIn.this.ID);
+                dispose();
+            }
+        });
 
         this.add(l1);
         this.add(jobID);

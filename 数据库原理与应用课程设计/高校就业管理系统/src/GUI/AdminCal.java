@@ -17,7 +17,7 @@ public class AdminCal extends JFrame {
     JButton back;
     public AdminCal() {
         setTitle("高校学生就业管理系统-就业汇总界面");
-        setBounds(500, 500, 1000, 700);
+        setBounds(300, 300, 1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
         init();

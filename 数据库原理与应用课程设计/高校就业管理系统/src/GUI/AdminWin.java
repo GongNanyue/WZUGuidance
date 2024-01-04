@@ -25,9 +25,9 @@ public class AdminWin extends JFrame {
         queryInfo = new JButton("查询学生信息");
         back = new JButton("注销");
 
-        employInfo.setBounds(50, 50, 100, 50);
-        queryInfo.setBounds(50, 150, 100, 50);
-        queryInfo.setBounds(50, 250, 100, 50);
+        employInfo.setBounds(50, 50, 200, 50);
+        queryInfo.setBounds(50, 150, 200, 50);
+        queryInfo.setBounds(50, 250, 200, 50);
 
         employInfo.addActionListener(new ActionListener() {
             @Override

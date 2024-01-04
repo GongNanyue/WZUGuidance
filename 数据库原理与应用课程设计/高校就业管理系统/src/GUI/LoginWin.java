@@ -37,7 +37,7 @@ public class LoginWin extends JFrame {
 
     public LoginWin() {
         setTitle("高校学生就业管理系统-登录界面");
-        setBounds(500, 500, 1000, 700);
+        setBounds(300, 300, 1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
         init();
