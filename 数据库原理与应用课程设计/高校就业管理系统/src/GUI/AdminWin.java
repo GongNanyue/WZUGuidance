@@ -13,7 +13,7 @@ public class AdminWin extends JFrame {
 
     public AdminWin() {
         setTitle("高校学生就业管理系统-管理员界面");
-        setBounds(500, 500, 1000, 700);
+        setBounds(300, 300, 1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
         init();
@@ -27,7 +27,7 @@ public class AdminWin extends JFrame {
 
         employInfo.setBounds(50, 50, 200, 50);
         queryInfo.setBounds(50, 150, 200, 50);
-        queryInfo.setBounds(50, 250, 200, 50);
+        back.setBounds(50, 250, 200, 50);
 
         employInfo.addActionListener(new ActionListener() {
             @Override
@@ -55,6 +55,7 @@ public class AdminWin extends JFrame {
         });
         this.add(employInfo);
         this.add(queryInfo);
+        this.add(back);
     }
 
 }

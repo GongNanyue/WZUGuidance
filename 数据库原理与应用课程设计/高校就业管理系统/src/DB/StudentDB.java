@@ -13,7 +13,7 @@ public class StudentDB {
     public ResultSet getSet(int ID) {
         try {
             Connection connection = DriverManager.getConnection(sqlURL, sqlUser, sqlPassword);
-            PreparedStatement preparedStatement = connection.prepareStatement("select * from student where ID = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from jobmanagesystem.student where ID = ?");
             preparedStatement.setObject(1, ID);
             ResultSet set = preparedStatement.executeQuery();
             preparedStatement.close();
@@ -44,6 +44,25 @@ public class StudentDB {
             preparedStatement.close();
             connection.close();
             return stu;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean iswork(int ID) {
+        try {
+            Connection connection = DriverManager.getConnection(sqlURL, sqlUser, sqlPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from jobmanagesystem.student where Id = ?");
+            preparedStatement.setInt(1, ID);
+            ResultSet set = preparedStatement.executeQuery();
+            boolean iswork = false;
+            if (set.next()) {
+                iswork = set.getBoolean(7);
+            }
+            set.close();
+            preparedStatement.close();
+            connection.close();
+            return iswork;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

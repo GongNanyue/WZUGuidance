@@ -2,12 +2,15 @@ package GUI;
 
 import DB.JobDB;
 import DB.RecordDB;
+import DB.StudentDB;
 import Entity.Job;
 import Entity.Student;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class StudentFillIn extends JFrame {
     int ID;
@@ -19,7 +22,7 @@ public class StudentFillIn extends JFrame {
     public StudentFillIn(int ID) {
         this.ID = ID;
         setTitle("高校学生就业管理系统-学生登记界面");
-        setBounds(500, 500, 1000, 700);
+        setBounds(300, 300, 1000, 700);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(null);
         init();
@@ -42,11 +45,16 @@ public class StudentFillIn extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 int ID = Integer.parseInt(jobID.getText());
                 Job job = new JobDB().getJob(ID);
-                if (job != null) {
-                    new RecordDB().insertRecord(ID, StudentFillIn.this.ID);
-                } else {
-                    JOptionPane.showMessageDialog(StudentFillIn.this, "不存在这个工作", "警告", JOptionPane.WARNING_MESSAGE);
+                if(new StudentDB().iswork(StudentFillIn.this.ID)){
+                    JOptionPane.showMessageDialog(StudentFillIn.this, "已经登记过工作", "警告", JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
+                if (job != null) {
+                        new RecordDB().insertRecord(ID, StudentFillIn.this.ID);
+                        JOptionPane.showMessageDialog(StudentFillIn.this, "登记成功", "提示", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(StudentFillIn.this, "不存在这个工作", "警告", JOptionPane.WARNING_MESSAGE);
+                    }
 
             }
         });

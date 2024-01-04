@@ -36,6 +36,18 @@ public class JobDB {
         return null;
     }
 
-
-
+    public boolean isFull(int jobID) {
+        try {
+            Connection connection = DriverManager.getConnection(sqlURL, sqlUser, sqlPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from jobinfo where Jobid = ?");
+            preparedStatement.setObject(1, jobID);
+            ResultSet set = preparedStatement.executeQuery();
+            if (set.next()) {
+                return set.getInt(3) >= set.getInt(2);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
 }

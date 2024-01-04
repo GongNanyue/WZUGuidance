@@ -29,7 +29,7 @@ public class AdminCal extends JFrame {
         statsInfo.setBounds(50, 50, 700, 50);
         EmploymentStats stats = new CalDB().getStats();
         String r1 = "毕业生数\t就业学生数\t待业学生数\t就业率\n";
-        String r2 = stats.GraduationCount + "\t" + stats.EmployedCount + "\t" + stats.UnemployedCount + "\t" + stats.EmploymentRate + "\n";
+        String r2 = stats.GraduationCount + "\t" + stats.EmployedCount + "\t" + stats.UnemployedCount + "\t" + stats.EmploymentRate + "%\n";
         statsInfo.append(r1);
         statsInfo.append(r2);
 
