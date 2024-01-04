@@ -36,8 +36,8 @@ public class ReaderWindow extends JFrame {
         textArea = new JTextArea();
         cancel = new JButton("返回");
 
-        textArea.setBounds(0, 0, 300, 300);
-        cancel.setBounds(0, 350, 100, 30);
+        textArea.setBounds(30, 30, 300, 300);
+        cancel.setBounds(30, 400, 100, 30);
 
 
         textArea.setFont(new Font("宋体",Font.BOLD,20));

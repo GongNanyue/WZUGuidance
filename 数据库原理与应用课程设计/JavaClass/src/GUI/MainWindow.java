@@ -41,12 +41,12 @@ public class MainWindow extends JFrame {
         welcomeMess = new JLabel(welcome);
 
         welcomeMess.setBounds(500,400,300,30);
-        borrowBook.setBounds(0,0,100,30);
-        returnBook.setBounds(0,50,100,30);
-        queryBook.setBounds(0,100,100,30);
-        readerInfo.setBounds(0,150,100,30);
-        cancel.setBounds(0,200,100,30);
-        showBooks.setBounds(150,0,200,30);
+        borrowBook.setBounds(50,50,100,30);
+        returnBook.setBounds(50,100,100,30);
+        queryBook.setBounds(50,150,100,30);
+        readerInfo.setBounds(50,200,100,30);
+        cancel.setBounds(50,250,100,30);
+        showBooks.setBounds(200,50,200,30);
 
 
 
