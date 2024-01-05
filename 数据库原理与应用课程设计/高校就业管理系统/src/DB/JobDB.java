@@ -50,4 +50,19 @@ public class JobDB {
         }
         return false;
     }
+
+    public String getJobName(int jobID) {
+        try {
+            Connection connection = DriverManager.getConnection(sqlURL, sqlUser, sqlPassword);
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from jobinfo where Jobid = ?");
+            preparedStatement.setObject(1, jobID);
+            ResultSet set = preparedStatement.executeQuery();
+            if (set.next()) {
+                return set.getString(4);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }
