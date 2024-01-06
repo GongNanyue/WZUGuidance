@@ -4,18 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ce925519-3638-403d-8299-e4f6fb68bdc3" name="更改" comment="" />
+    <list default="true" id="ce925519-3638-403d-8299-e4f6fb68bdc3" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0af9bc1e-3097-47c9-b23e-544bc118bcba.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0af9bc1e-3097-47c9-b23e-544bc118bcba/storage_v2/_src_/schema/eb.nQwAAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0af9bc1e-3097-47c9-b23e-544bc118bcba/storage_v2/_src_/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0af9bc1e-3097-47c9-b23e-544bc118bcba/storage_v2/_src_/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/0af9bc1e-3097-47c9-b23e-544bc118bcba/storage_v2/_src_/schema/library.uyToCQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/JavaClass" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2aP7yU1Ld3VB0ijKcrubWIz2uEn" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,9 +33,9 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Another",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/GNY/Documents/GitHub/WZUOJ_Answer/数据库原理与应用课程设计",
+    "last_opened_file_path": "C:/Users/GNY/Desktop/JetBrainFile/IdeaProjects/demo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -71,6 +79,10 @@
       <option name="presentableId" value="Default" />
       <updated>1704208614488</updated>
       <workItem from="1704208615639" duration="1863000" />
+      <workItem from="1704241519474" duration="154000" />
+      <workItem from="1704241712343" duration="6000" />
+      <workItem from="1704243577992" duration="260000" />
+      <workItem from="1704248369337" duration="11000" />
     </task>
     <servers />
   </component>
@@ -82,7 +94,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/JavaClass/src/GUI/ReturnWindow.java</url>
-          <line>51</line>
+          <line>50</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
