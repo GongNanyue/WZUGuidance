@@ -29,6 +29,6 @@ void printList(PolyList L) {
       sprintf(tmp, "x^%d", np->exp);
     strcat(res, tmp);
   }
-  if (res[0] == '+' || res[0] == '-' && res[1] == '0') printf("%s", res + 1);
-  else printf("%s", res);
+  if (res[0] == '+' || res[0] == '-' && res[1] == '0') printf("%s\n", res + 1);
+  else printf("%s\n", res);
 }
