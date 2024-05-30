@@ -1,5 +1,5 @@
-void mySwap(ElementType *a, ElementType *b) {
-  ElementType tmp = *a;
-  *a = *b;
-  *b = tmp;
+void pop(Heap H) {
+    swap(H, 1, H->size);
+    --H->size;
+    heapify(H,1);
 }
