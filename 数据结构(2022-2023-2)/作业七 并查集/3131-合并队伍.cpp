@@ -43,21 +43,21 @@ void destroySet(Set S) {
 
 int main() {
     int n;
-    cin >> n;
+    scanf("%d",&n);
     Set set = createSet(n);
     initSet(set);
     int m;
-    cin >> m;
+    scanf("%d",&m);
     while (m--) {
         int x, y;
-        cin >> x >> y;
+        scanf("%d %d",&x,&y);
         unionSet(set, x, y);
     }
     int k;
-    cin >> k;
+    scanf("%d",&k);
     while (k--) {
         int a, b;
-        cin >> a >> b;
+        scanf("%d %d",&a,&b);
         if (findSet(set, a) == findSet(set, b))
             cout << "yes\n";
         else
