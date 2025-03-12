@@ -1,5 +1,4 @@
-Plt3[f_] := 
-  Plot3D[f, {x, -1, 1}, {y, -1, 1}, AxesLabel -> Automatic, 
+Plt3[f_, R_] := 
+  Plot3D[f, {x, -R, R}, {y, -R, R}, AxesLabel -> Automatic, 
    PlotTheme -> "Detailed", BoxRatios -> {1, 1, 1}, 
-   PlotRange -> {{-1, 1}, {-1, 1}, {-1, 1}}, ClippingStyle -> None];
-Plt3[x^2 y/(x^2 + y^2)]
+   PlotRange -> {{-R, R}, {-R, R}, {-R, R}}, ClippingStyle -> None];
