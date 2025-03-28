@@ -2,3 +2,8 @@ Plt3[f_, R_] :=
   Plot3D[f, {x, -R, R}, {y, -R, R}, AxesLabel -> Automatic, 
    PlotTheme -> "Detailed", BoxRatios -> {1, 1, 1}, 
    PlotRange -> {{-R, R}, {-R, R}, {-R, R}}, ClippingStyle -> None];
+
+ContourPlt3[f_, R_] := 
+  ContourPlot3D[f, {x, -R, R}, {y, -R, R}, {z, -R, R}, 
+   AxesLabel -> Automatic, PlotTheme -> "Detailed", 
+   BoxRatios -> {1, 1, 1}, PlotRange -> {{-R, R}, {-R, R}, {-R, R}}];
